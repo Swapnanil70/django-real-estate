@@ -16,3 +16,46 @@
 2024-07-11 00:29:53.695 IST [41248] LOG:  checkpoint starting: shutdown immediate
 2024-07-11 00:29:53.710 IST [41248] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.018 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=0 kB; lsn=0/1A27100, redo lsn=0/1A27100
 2024-07-11 00:29:53.718 IST [41592] LOG:  database system is shut down
+2024-07-11 00:30:18.127 IST [34900] LOG:  starting PostgreSQL 16.3, compiled by Visual C++ build 1939, 64-bit
+2024-07-11 00:30:18.134 IST [34900] LOG:  listening on IPv6 address "::1", port 5432
+2024-07-11 00:30:18.134 IST [34900] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2024-07-11 00:30:18.232 IST [23396] LOG:  database system was shut down at 2024-07-11 00:29:53 IST
+2024-07-11 00:30:18.312 IST [34900] LOG:  database system is ready to accept connections
+2024-07-11 00:35:18.201 IST [26112] LOG:  checkpoint starting: time
+2024-07-11 00:35:18.227 IST [26112] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.003 s, total=0.027 s; sync files=2, longest=0.003 s, average=0.002 s; distance=0 kB, estimate=0 kB; lsn=0/1A271E8, redo lsn=0/1A271B0
+2024-07-11 16:28:36.025 IST [24944] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-07-11 16:28:36.026 IST [1512] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-07-11 17:02:21.708 IST [34900] LOG:  server process (PID 28412) was terminated by exception 0xC000013A
+2024-07-11 17:02:21.708 IST [34900] DETAIL:  Failed process was running: 
+	            SELECT
+	                c.relname,
+	                CASE
+	                    WHEN c.relispartition THEN 'p'
+	                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+	                    ELSE 't'
+	                END,
+	                obj_description(c.oid, 'pg_class')
+	            FROM pg_catalog.pg_class c
+	            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+	                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+	                AND pg_catalog.pg_table_is_visible(c.oid)
+	        
+2024-07-11 17:02:21.708 IST [34900] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2024-07-11 17:02:21.708 IST [34900] LOG:  terminating any other active server processes
+2024-07-11 17:02:21.722 IST [34900] LOG:  all server processes terminated; reinitializing
+2024-07-11 17:02:21.781 IST [41176] LOG:  database system was interrupted; last known up at 2024-07-11 00:35:18 IST
+2024-07-11 17:02:22.514 IST [41176] LOG:  database system was not properly shut down; automatic recovery in progress
+2024-07-11 17:02:22.521 IST [41176] LOG:  redo starts at 0/1A271B0
+2024-07-11 17:02:22.521 IST [41176] LOG:  invalid record length at 0/1A27298: expected at least 24, got 0
+2024-07-11 17:02:22.521 IST [41176] LOG:  redo done at 0/1A27260 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2024-07-11 17:02:22.526 IST [30276] LOG:  checkpoint starting: end-of-recovery immediate wait
+2024-07-11 17:02:22.543 IST [30276] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.003 s, total=0.021 s; sync files=2, longest=0.002 s, average=0.002 s; distance=0 kB, estimate=0 kB; lsn=0/1A27298, redo lsn=0/1A27298
+2024-07-11 17:02:22.611 IST [34900] LOG:  database system is ready to accept connections
+2024-07-11 17:02:23.629 IST [34900] LOG:  background worker "logical replication launcher" (PID 4212) was terminated by exception 0xC000013A
+2024-07-11 17:02:23.629 IST [34900] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2024-07-11 17:02:23.629 IST [34900] LOG:  terminating any other active server processes
+2024-07-11 17:02:23.635 IST [34900] LOG:  received fast shutdown request
+^C
