@@ -58,4 +58,28 @@
 2024-07-11 17:02:23.629 IST [34900] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
 2024-07-11 17:02:23.629 IST [34900] LOG:  terminating any other active server processes
 2024-07-11 17:02:23.635 IST [34900] LOG:  received fast shutdown request
-^C
+^C2024-07-14 01:55:05.398 IST [30104] LOG:  starting PostgreSQL 16.3, compiled by Visual C++ build 1939, 64-bit
+2024-07-14 01:55:05.405 IST [30104] LOG:  listening on IPv6 address "::1", port 5432
+2024-07-14 01:55:05.405 IST [30104] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2024-07-14 01:55:05.519 IST [29716] LOG:  database system was shut down at 2024-07-14 01:54:42 IST
+2024-07-14 01:55:05.603 IST [30104] LOG:  database system is ready to accept connections
+2024-07-14 02:00:05.475 IST [33340] LOG:  checkpoint starting: time
+2024-07-14 02:00:05.701 IST [33340] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.199 s, sync=0.009 s, total=0.229 s; sync files=4, longest=0.003 s, average=0.003 s; distance=0 kB, estimate=0 kB; lsn=0/1AD43D8, redo lsn=0/1AD43A0
+2024-07-14 02:00:05.808 IST [30104] LOG:  received fast shutdown request
+2024-07-14 02:00:05.810 IST [37472] ERROR:  canceling statement due to user request
+2024-07-14 02:00:05.813 IST [30104] LOG:  aborting any active transactions
+2024-07-14 02:00:05.813 IST [8776] FATAL:  terminating connection due to administrator command
+2024-07-14 02:00:05.816 IST [30104] LOG:  background worker "logical replication launcher" (PID 37472) exited with exit code 1
+2024-07-14 02:00:05.819 IST [33340] LOG:  shutting down
+2024-07-14 02:00:05.822 IST [33340] LOG:  checkpoint starting: shutdown immediate
+2024-07-14 02:00:05.838 IST [33340] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.020 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=0 kB; lsn=0/1AD4450, redo lsn=0/1AD4450
+2024-07-14 02:00:05.847 IST [30104] LOG:  database system is shut down
+2024-07-14 02:00:13.856 IST [35416] LOG:  starting PostgreSQL 16.3, compiled by Visual C++ build 1939, 64-bit
+2024-07-14 02:00:13.863 IST [35416] LOG:  listening on IPv6 address "::1", port 5432
+2024-07-14 02:00:13.864 IST [35416] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2024-07-14 02:00:13.972 IST [6888] LOG:  database system was shut down at 2024-07-14 02:00:05 IST
+2024-07-14 02:00:14.045 IST [35416] LOG:  database system is ready to accept connections
+2024-07-14 02:05:13.933 IST [22276] LOG:  checkpoint starting: time
+2024-07-14 02:05:15.464 IST [22276] LOG:  checkpoint complete: wrote 17 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.486 s, sync=0.023 s, total=1.532 s; sync files=12, longest=0.004 s, average=0.002 s; distance=3 kB, estimate=3 kB; lsn=0/1AD5108, redo lsn=0/1AD50D0
+2024-07-15 00:50:21.337 IST [22276] LOG:  checkpoint starting: time
+2024-07-15 00:50:23.784 IST [22276] LOG:  checkpoint complete: wrote 23 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.396 s, sync=0.034 s, total=2.451 s; sync files=17, longest=0.004 s, average=0.002 s; distance=3 kB, estimate=3 kB; lsn=0/1AD60E0, redo lsn=0/1AD60A8

@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
+# Serve static and media files from development server
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     
