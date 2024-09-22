@@ -13,6 +13,20 @@ class CustomUserManager(BaseUserManager):
             raise ValueError(_("You must provide a valid email address"))
         
     def create_user(self, username, first_name, last_name, email, password=None, **extra_fields):
+        """
+        Creates a new user with the given username, first name, last name, and email.
+        
+        Args:
+            username (str): The username of the new user.
+            first_name (str): The first name of the new user.
+            last_name (str): The last name of the new user.
+            email (str): The email address of the new user.
+            password (str, optional): The password for the new user. Defaults to None.
+            **extra_fields: Additional fields to be set for the new user.
+        
+        Returns:
+            User
+        """
         if not username:
             raise ValueError(_("The Username field must be filled"))
         
@@ -42,6 +56,29 @@ class CustomUserManager(BaseUserManager):
         return user
     
     def create_superuser(self, username, first_name, last_name, email, password=None, **extra_fields):
+        """
+        Creates a superuser with the given parameters. The superuser must have the following properties:
+        
+        - `is_staff` must be set to True.
+        - `is_superuser` must be set to True.
+        - `is_active` must be set to True.
+        
+        If any of these properties are not set to the correct values, a `ValueError` will be raised.
+        
+        If no password is provided, a `ValueError` will be raised.
+        
+        An email address must be provided for the superuser. If no email address is provided, a `ValueError` will be raised.
+        
+        This function calls the `create_user` method to create the superuser and saves it to the database using the `_db` attribute of the manager.
+        
+        :param username: A string representing the username of the superuser.
+        :param first_name: A string representing the first name of the superuser.
+        :param last_name: A string representing the last name of the superuser.
+        :param email: An email address for the superuser.
+        :param password: A string representing the password of the superuser.
+        :param extra_fields: Additional fields to be set on the superuser.
+        :return: The created superuser.
+        """
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_active', True)

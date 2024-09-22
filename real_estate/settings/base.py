@@ -43,8 +43,10 @@ THIRD_PARTY_APPS = [
     'phonenumber_field',
 ]
 
+# These are the local ones which are done by us
 LOCAL_APPS = ['apps.users', 'apps.common', 'apps.profiles', 'apps.ratings']
 
+# Organize the code installed apps consists of all the local and third party apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
@@ -107,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -171,7 +173,7 @@ logging.config.dictConfig({
         '': {
             'handlers': ['console', 'file'],
             'level': 'INFO',
-            'propagate': False,
+            'propagate': False, # avoid double logging with root logger
         },
         'apps': {
             'handlers': ['console'],
