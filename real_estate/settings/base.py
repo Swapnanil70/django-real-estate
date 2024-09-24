@@ -46,7 +46,7 @@ THIRD_PARTY_APPS = [
 ]
 
 # These are the local ones which are done by us
-LOCAL_APPS = ['apps.users', 'apps.common', 'apps.profiles', 'apps.ratings']
+LOCAL_APPS = ['apps.users', 'apps.common', 'apps.profiles', 'apps.ratings', 'apps.properties', 'apps.enquiries']
 
 # Organize the code installed apps consists of all the local and third party apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

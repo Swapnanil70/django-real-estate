@@ -7,6 +7,7 @@ urlpatterns = [
     path('supersecret/', admin.site.urls),
     path('api/v1/auth/', include('djoser.urls')),
     path('api/v1/auth/', include('djoser.urls.jwt')),
+    path('api/v1/profiles/', include('apps.profiles.urls')),
 ]
 
 # Serve static and media files from development server
