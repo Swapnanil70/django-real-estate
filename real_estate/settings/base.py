@@ -146,7 +146,7 @@ from datetime import timedelta
 # Django Rest Framework Simple JWT configuration
 # Reference: https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html
 SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('BEARER','JWT',),
+    # 'AUTH_HEADER_TYPES': ('BEARER','JWT',), # Comment this line while testing in postman
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'SIGNING_KEY': env('SIGNING_KEY'),

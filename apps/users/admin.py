@@ -16,7 +16,7 @@ class UserAdmin(BaseUserAdmin):
         (
             _('Login Credentials'), 
             {
-                'fields': ('email', 'password')
+                'fields': ('email', 'password',)
             },
         ),
         (

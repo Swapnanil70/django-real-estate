@@ -83,7 +83,7 @@ class Property(TimeStampedUUIDModel):
     )
     # In india we use sqft so change this later
     plot_area = models.DecimalField(
-        verbose_name=_("Plot Area(m^2)"), max_digits=8, decimal_places=2, default=0.0
+        verbose_name=_("Plot Area(sqft)"), max_digits=8, decimal_places=2, default=0.0
     )
     total_floors = models.IntegerField(verbose_name=_("Number of floors"), default=0)
     bedrooms = models.IntegerField(verbose_name=_("Bedrooms"), default=1)

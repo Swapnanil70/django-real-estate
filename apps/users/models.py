@@ -21,7 +21,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     objects = CustomUserManager()
     
-    # What is this for? study more about this
     class Meta:
         verbose_name = _("User")
         verbose_name_plural = _("Users")
