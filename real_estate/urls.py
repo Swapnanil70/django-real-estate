@@ -15,7 +15,8 @@ urlpatterns = [
 
 # Serve static and media files from development server
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    pass
+    # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # Configure Admin frontend   
 admin.site.site_header = "Real Estate Admin"
