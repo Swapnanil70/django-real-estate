@@ -7,11 +7,13 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
+
 from apps.common.models import TimeStampedUUIDModel
 
 # Create your models here.
 
 User = get_user_model()
+
 
 class PropertyPublishedManager(models.Manager):
     def get_queryset(self):
@@ -19,23 +21,24 @@ class PropertyPublishedManager(models.Manager):
         return (
             super(PropertyPublishedManager, self)
             .get_queryset()
-            .filter(published=True) # this published 
+            .filter(published=True)  # this published
         )
-        
+
+
 class Property(TimeStampedUUIDModel):
     class AdvertType(models.TextChoices):
         FOR_SALE = "For Sale", _("For Sale")
         FOR_RENT = "For Rent", _("For Rent")
         AUCTION = "Auction", _("Auction")
-        
+
     class PropertyType(models.TextChoices):
         HOUSE = "House", _("House")
         APARTMENT = "Apartment", _("Apartment")
         OFFICE = "Office", _("Office")
         WAREHOUSE = "Warehouse", _("Warehouse")
         COMMERCIAL = "Commercial", _("Commercial")
-        OTHER = "Other", _("Other") 
-        
+        OTHER = "Other", _("Other")
+
     user = models.ForeignKey(
         User,
         verbose_name=_("Agent,Seller or Buyer"),
@@ -131,38 +134,49 @@ class Property(TimeStampedUUIDModel):
         verbose_name=_("Published Status"), default=False
     )
     views = models.IntegerField(verbose_name=_("Total Views"), default=0)
-    
-    objects = models.Manager() # Ref : https://docs.djangoproject.com/en/3.2/topics/db/managers/#overriding-the-default-manager
-    published = PropertyPublishedManager() # Ref : https://docs.djangoproject.com/en/3.2/topics/db/managers/#overriding-the-default-manager
-    
-    def __str__(self): # Ref : https://docs.djangoproject.com/en/3.2/ref/models/instances/#str
+
+    objects = (
+        models.Manager()
+    )  # Ref : https://docs.djangoproject.com/en/3.2/topics/db/managers/#overriding-the-default-manager
+    published = (
+        PropertyPublishedManager()
+    )  # Ref : https://docs.djangoproject.com/en/3.2/topics/db/managers/#overriding-the-default-manager
+
+    def __str__(
+        self,
+    ):  # Ref : https://docs.djangoproject.com/en/3.2/ref/models/instances/#str
         return self.title
-    
+
     class Meta:
         verbose_name = "Property"
-        verbose_name_plural = "Properties" # if we dont set this then it will be "Propertys"
-        
+        verbose_name_plural = (
+            "Properties"  # if we dont set this then it will be "Propertys"
+        )
+
     def save(self, *args, **kwargs):
         self.title = str.title(self.title)
         self.description = str.capitalize(self.description)
         self.ref_code = "".join(
             random.choices(string.ascii_uppercase + string.digits, k=10)
-        ) # Create a random ref code to identify each property
+        )  # Create a random ref code to identify each property
         super(Property, self).save(*args, **kwargs)
-        
-    @property # Ref : https://docs.djangoproject.com/en/3.2/ref/models/fields/#property
+
+    @property  # Ref : https://docs.djangoproject.com/en/3.2/ref/models/fields/#property
     def final_property_price(self):
         tax_percentage = self.tax
         property_price = self.price
         tax_amount = round(tax_percentage * property_price, 2)
         price_after_tax = float(round(property_price + tax_amount, 2))
         return price_after_tax
-    
+
+
 # This is used to track views of each property
 class PropertyViews(TimeStampedUUIDModel):
     ip = models.CharField(verbose_name=_("IP Address"), max_length=250)
-    property = models.ForeignKey(Property, related_name="property_views", on_delete=models.CASCADE)
-    
+    property = models.ForeignKey(
+        Property, related_name="property_views", on_delete=models.CASCADE
+    )
+
     def __str__(self):
         return (
             f"Total views on - {self.property.title} is - {self.property.views} view(s)"

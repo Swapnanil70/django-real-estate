@@ -2,7 +2,7 @@ from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .exceptions import ProfileNotFound, NotYourProfile
+from .exceptions import NotYourProfile, ProfileNotFound
 from .models import Profile
 from .renderers import ProfileJSONRenderer
 from .serializers import ProfileSerializer, UpdateProfileSerializer
@@ -11,6 +11,7 @@ from .serializers import ProfileSerializer, UpdateProfileSerializer
 # We will use class based views instead of function based views
 # Study the difference and Ref : https://www.django-rest-framework.org/api-guide/views/#class-based-views
 # Study function based views : https://www.django-rest-framework.org/api-guide/views/#function-based-views
+
 
 class AgentListAPIView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -22,8 +23,8 @@ class AgentListAPIView(generics.ListAPIView):
         user = self.request.user
         queryset = Profile.objects.filter(user=user)
         return queryset
-    
-    
+
+
 class TopAgentsListAPIView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     queryset = Profile.objects.filter(top_agent=True)
@@ -39,7 +40,7 @@ class GetProfileAPIView(APIView):
     def get(self, request):
         user = self.request.user
         user_profile = Profile.objects.get(user=user)
-        serializer =  ProfileSerializer(user_profile, context={"request": request})
+        serializer = ProfileSerializer(user_profile, context={"request": request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
