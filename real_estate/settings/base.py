@@ -227,3 +227,9 @@ logging.config.dictConfig(
         },
     }
 )
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:9090',
+    'http://127.0.0.1:9090',
+    # Add any other trusted origins here
+]
