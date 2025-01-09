@@ -18,6 +18,17 @@ services:
         networks:
             - estate-react
 
+    client:
+        build:
+            context: ./client
+            dockerfile: ./docker/local/Dockerfile
+        restart: on-failure
+        volumes:
+            - ./client:/app
+            - /app/node_modules
+        networks:
+            - estate-react
+
     postgres-db:
         image: postgres:16-alpine
         ports:
@@ -74,7 +85,7 @@ services:
             context: ./docker/local/nginx
             dockerfile: Dockerfile
         ports:
-            - "9090:80"
+            - "8080:80"
         depends_on:
             - api
         volumes:
