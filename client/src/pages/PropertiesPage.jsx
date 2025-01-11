@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-// import Property from "../components/Property";
+import Property from "../components/Property";
 import Spinner from "../components/Spinner";
 // import Title from "../components/Title";
-import { getProperties, reset } from "../features/properties/propertySlice";
+import { getProperties } from "../features/properties/propertySlice";
 
 const PropertiesPage = () => {
 	const { properties, isLoading, isError, message } = useSelector(
@@ -45,7 +45,7 @@ const PropertiesPage = () => {
 									lg={4}
 									xl={3}
 								>
-									{/* <Property property={property} /> */}
+									<Property property={property} />
 								</Col>
 							))}
 						</Row>
