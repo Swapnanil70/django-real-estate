@@ -5,7 +5,7 @@ import { GiHouse } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
-// import { logout, reset } from "../features/auth/authSlice";
+import { logout, reset } from "../features/auth/authSlice";
 
 const Header = () => {
 	const navigate = useNavigate();
@@ -14,8 +14,8 @@ const Header = () => {
 	const { user } = useSelector((state) => state.auth);
 
 	const logoutHandler = () => {
-		// dispatch(logout());
-		// dispatch(reset());
+		dispatch(logout());
+		dispatch(reset());
 		navigate("/");
 	};
 	return (
