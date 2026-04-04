@@ -18,7 +18,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(" ") # type: ignore
 
 
 # Application definition
@@ -192,6 +192,10 @@ logger = logging.getLogger(__name__)
 LOG_LEVEL = "INFO"
 
 # logging configuration **
+# Ensure logs directory exists so FileHandler can open the file
+LOGS_DIR = BASE_DIR / "logs"
+LOGS_DIR.mkdir(parents=True, exist_ok=True)
+
 logging.config.dictConfig(
     {
         "version": 1,
@@ -208,7 +212,7 @@ logging.config.dictConfig(
             "file": {
                 "level": "INFO",
                 "class": "logging.FileHandler",
-                "filename": "logs/real_estate.log",
+                "filename": str(LOGS_DIR / "real_estate.log"),
                 "formatter": "file",
             },
             "django.server": DEFAULT_LOGGING["handlers"]["django.server"],

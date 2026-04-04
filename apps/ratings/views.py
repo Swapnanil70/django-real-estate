@@ -21,11 +21,11 @@ def create_agent_review(request, profile_id):
         formatted_response = {"message": "You can't rate yourself"}
         return Response(formatted_response, status=status.HTTP_403_FORBIDDEN)
 
-    alreadyExists = agent_profile.agent_review.filter(
+    already_exists = agent_profile.agent_review.filter(
         agent__pkid=profile_user.pkid
     ).exists()
 
-    if alreadyExists:
+    if already_exists:
         formatted_response = {"details": "You have already rated this agent"}
         return Response(formatted_response, status=status.HTTP_403_FORBIDDEN)
 

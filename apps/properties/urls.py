@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 
 # Note the difference between class and function based views
-# In function based views url path we do not use "as_view()" methood
+# In function based views url path we do not use "as_view()" method
 urlpatterns = [
     path("all/", views.ListAllPropertiesAPIView.as_view(), name="all-properties"),
     path(
@@ -18,4 +18,5 @@ urlpatterns = [
     path("update/<slug:slug>/", views.update_property_api_view, name="update-property"),
     path("delete/<slug:slug>/", views.delete_property_api_view, name="delete-property"),
     path("search/", views.PropertySearchAPIView.as_view(), name="property-search"),
+    path("upload/", views.upload_property_image, name="upload-property-image"),
 ]

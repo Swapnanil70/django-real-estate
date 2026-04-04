@@ -17,11 +17,11 @@ User = get_user_model()
 
 class PropertyPublishedManager(models.Manager):
     def get_queryset(self):
-        # Ref : https://docs.djangoproject.com/en/3.2/topics/db/managers/#django.db.models.Manager.get_queryset
+        # noqa: E501
         return (
             super(PropertyPublishedManager, self)
             .get_queryset()
-            .filter(published=True)  # this published
+            .filter(published=True)
         )
 
 
@@ -41,7 +41,7 @@ class Property(TimeStampedUUIDModel):
 
     user = models.ForeignKey(
         User,
-        verbose_name=_("Agent,Seller or Buyer"),
+        verbose_name=_("Agent, Seller or Buyer"),
         related_name="agent_buyer",
         on_delete=models.DO_NOTHING,
     )
@@ -108,7 +108,10 @@ class Property(TimeStampedUUIDModel):
     )
 
     cover_photo = models.ImageField(
-        verbose_name=_("Main Photo"), default="/house_sample.jpg", null=True, blank=True
+        verbose_name=_("Main Photo"),
+        default="/house_sample.jpg",
+        null=True,
+        blank=True,
     )
     photo1 = models.ImageField(
         default="/interior_sample.jpg",
@@ -135,16 +138,10 @@ class Property(TimeStampedUUIDModel):
     )
     views = models.IntegerField(verbose_name=_("Total Views"), default=0)
 
-    objects = (
-        models.Manager()
-    )  # Ref : https://docs.djangoproject.com/en/3.2/topics/db/managers/#overriding-the-default-manager
-    published = (
-        PropertyPublishedManager()
-    )  # Ref : https://docs.djangoproject.com/en/3.2/topics/db/managers/#overriding-the-default-manager
+    objects = models.Manager()  # noqa: E501
+    published = PropertyPublishedManager()  # noqa: E501
 
-    def __str__(
-        self,
-    ):  # Ref : https://docs.djangoproject.com/en/3.2/ref/models/instances/#str
+    def __str__(self):
         return self.title
 
     class Meta:

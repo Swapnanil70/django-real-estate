@@ -1,5 +1,4 @@
 from django_countries.serializer_fields import CountryField
-from django_countries.serializers import CountryFieldMixin
 from rest_framework import serializers
 
 from .models import Property, PropertyViews
@@ -21,7 +20,7 @@ class PropertySerializer(serializers.ModelSerializer):
             "pkid",
             "id",
             "user",
-            "profile_photo"
+            "profile_photo",
             "title",
             "slug",
             "ref_code",
@@ -51,7 +50,7 @@ class PropertySerializer(serializers.ModelSerializer):
 
     def get_user(self, obj):
         return obj.user.username
-    
+
     def get_cover_photo(self, obj):
         return obj.cover_photo.url
 
@@ -59,17 +58,18 @@ class PropertySerializer(serializers.ModelSerializer):
         return obj.photo1.url
 
     def get_photo2(self, obj):
-        return obj.photo2.url   
-    
+        return obj.photo2.url
+
     def get_photo3(self, obj):
-        return obj.photo3.url   
-    
+        return obj.photo3.url
+
     def get_photo4(self, obj):
-        return obj.photo4.url 
-    
+        return obj.photo4.url
+
     def get_profile_photo(self, obj):
         return obj.user.profile.profile_photo.url
-    
+
+
 class PropertyCreateSerializer(serializers.ModelSerializer):
     country = CountryField(name_only=True)
 

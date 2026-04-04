@@ -7,10 +7,8 @@ from .models import Profile
 from .renderers import ProfileJSONRenderer
 from .serializers import ProfileSerializer, UpdateProfileSerializer
 
-# Create your views here.
-# We will use class based views instead of function based views
-# Study the difference and Ref : https://www.django-rest-framework.org/api-guide/views/#class-based-views
-# Study function based views : https://www.django-rest-framework.org/api-guide/views/#function-based-views
+# We use class based views instead of function based views
+# Ref: https://www.django-rest-framework.org/api-guide/views/#class-based-views
 
 
 class AgentListAPIView(generics.ListAPIView):
